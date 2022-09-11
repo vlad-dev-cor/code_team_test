@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  app_test:
+    image: dish/dish-server:base
+    restart: always
+    env_file:
+      - .env
+    command: bash -c "python -m pytest . --cov=./dish --cov-report term"
+    networks:
+      - local-apps
+
+
+networks:
+  local-apps:
+    external: true
+
+

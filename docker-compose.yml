@@ -1,0 +1,20 @@
+version: "3"
+
+services:
+  dishweb:
+    build:
+      context: .
+      dockerfile: DockerfileControlPanel
+    image: dish/dish-server:base
+    restart: always
+    env_file:
+      - .env
+    networks:
+      - local-apps
+    command: python /src/manage.py runserver 0.0.0.0:8000
+    ports:
+      - "8003:8000"
+
+networks:
+  local-apps:
+    external: true

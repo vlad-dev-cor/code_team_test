@@ -1,0 +1,6 @@
+FROM dish/python38_django_4:base
+COPY . /src/
+WORKDIR /src
+EXPOSE 8000
+
+RUN mkdir -p /root/.postgresql
